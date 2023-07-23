@@ -1,0 +1,15 @@
+
+
+步骤：
+1.创建Lock的实例，需要确保多个线程共用同一个Lock实例！需要考虑将此对象声明为static final
+    private static final ReentrantLock lock = new ReentrantLock();
+2.执行lock()方法，锁定对共享资源的调用
+    lock.lock();
+3.unlock()的调用，释放对共享数据的锁定
+    lock.unlock();
+
+面试题：
+synchronized同步方法 和lock的对比？
+    synchronized不管是同步代码块还是同步方法，都需要在结束一对{}之后，释放对同步监视器的调用
+    Lock是通过两个方法控制需要被同步的代码，更灵活一些。
+    Lock作为借口，提供了多个实现类，适合更多更复杂的场景，效率更高。
